@@ -31,6 +31,10 @@
         self.imageView = [[UIImageView alloc] init];
         [self addSubview:self.imageView];
         
+        self.strokeWidth = 1.0;
+        self.strokeColor = UIColor.redColor;
+        self.lineCap = kCGLineCapRound;
+        
     }
     
     return self;
@@ -88,9 +92,13 @@
     // Use QuadCurve is the key
     CGContextAddQuadCurveToPoint(context, self.previousPoint1.x, self.previousPoint1.y, mid2.x, mid2.y);
     
-    CGContextSetLineCap(context, kCGLineCapRound);
-    CGContextSetLineWidth(context, 2.0);
-    CGContextSetRGBStrokeColor(context, 1.0, 0.0, 0.0, 1.0);
+    CGContextSetLineCap(context, self.lineCap);
+    CGContextSetLineWidth(context, self.strokeWidth);
+    
+    CGFloat red, green, blue, alpha;
+    [self.strokeColor getRed:&red green:&green blue:&blue alpha:&alpha];
+    CGContextSetRGBStrokeColor(context, red, green, blue, alpha);
+    
     CGContextStrokePath(context);
     
     self.imageView.image = UIGraphicsGetImageFromCurrentImageContext();

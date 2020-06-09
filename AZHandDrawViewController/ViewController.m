@@ -20,6 +20,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.handDrawView.strokeWidth = 2.0;
+    
+    self.handDrawView.strokeColor = UIColor.purpleColor;
+    
+    self.handDrawView.lineCap = kCGLineCapRound;
     
 }
 

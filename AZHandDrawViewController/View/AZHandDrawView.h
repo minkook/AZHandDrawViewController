@@ -12,6 +12,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AZHandDrawView : UIView
 
+
+@property (nonatomic, assign) CGFloat strokeWidth;  // default is 1.
+
+@property (nonatomic, strong) UIColor *strokeColor; // default is UIColor.redColor.
+
+@property (nonatomic, assign) CGLineCap lineCap;    // default is kCGLineCapRound.
+
+
 @end
 
 NS_ASSUME_NONNULL_END
