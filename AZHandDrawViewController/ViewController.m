@@ -7,8 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "AZHandDrawView.h"
 
 @interface ViewController ()
+
+@property (nonatomic, weak) IBOutlet AZHandDrawView *handDrawView;
 
 @end
 
@@ -17,7 +20,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    int a = 1;
     
 }
 
