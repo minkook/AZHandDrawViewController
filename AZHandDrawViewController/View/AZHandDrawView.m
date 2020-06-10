@@ -13,6 +13,8 @@
 
 @property (nonatomic, strong) UIImageView *imageView;
 
+@property (nonatomic, strong) UIImage *clearImage;
+
 @property (nonatomic, assign) CGPoint previousPoint1;
 @property (nonatomic, assign) CGPoint previousPoint2;
 @property (nonatomic, assign) CGPoint currentPoint;
@@ -77,7 +79,11 @@
     
 }
 
-- (void)saveImage:(UIImage *)image {
+
+
+#pragma mark - Execute Command History
+
+- (void)executeCommandHistoryWithImage:(UIImage *)image {
     
     NSArray *array = self.commandHistory;
     if (0 < self.currentCommandIndex && self.currentCommandIndex < self.commandHistory.count - 1) {
@@ -129,6 +135,25 @@
 
 
 
+#pragma mark - Clear
+
+- (void)clear {
+    
+    if (self.commandHistory.count == 0) {
+        return;
+    }
+    
+    self.commandHistory = [NSArray new];
+    
+    self.currentCommandIndex = 0;
+    
+    self.imageView.image = self.clearImage;
+    [self executeCommandHistoryWithImage:self.clearImage];
+    
+}
+
+
+
 #pragma mark - Touch Event
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -143,10 +168,10 @@
         self.isFlagFirstDraw = YES;
         
         UIGraphicsBeginImageContext(self.imageView.frame.size);
-        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        self.clearImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         
-        [self saveImage:image];
+        [self executeCommandHistoryWithImage:self.clearImage];
         
     }
     
@@ -188,7 +213,7 @@
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
-    [self saveImage:self.imageView.image];
+    [self executeCommandHistoryWithImage:self.imageView.image];
     
 }
 

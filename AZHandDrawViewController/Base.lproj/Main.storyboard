@@ -32,12 +32,23 @@
                                             <action selector="undoButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ucH-Ow-LUI"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VvD-Bf-BXV">
+                                        <rect key="frame" x="255" y="0.0" width="36" height="40"/>
+                                        <state key="normal" title="Clear"/>
+                                        <connections>
+                                            <action selector="clearButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TSI-ul-H3q"/>
+                                            <action selector="undoButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g7x-z5-OZp"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="yFV-wz-Gpk" firstAttribute="leading" secondItem="YEN-zl-mW9" secondAttribute="trailing" constant="20" id="4vz-mu-neC"/>
                                     <constraint firstAttribute="height" constant="40" id="AtF-NN-Kah"/>
+                                    <constraint firstAttribute="bottom" secondItem="VvD-Bf-BXV" secondAttribute="bottom" id="GEN-Il-f6i"/>
                                     <constraint firstAttribute="bottom" secondItem="YEN-zl-mW9" secondAttribute="bottom" id="dbu-pv-bap"/>
+                                    <constraint firstItem="YEN-zl-mW9" firstAttribute="leading" secondItem="VvD-Bf-BXV" secondAttribute="trailing" constant="20" id="eco-TL-m5w"/>
+                                    <constraint firstItem="VvD-Bf-BXV" firstAttribute="top" secondItem="cs1-V0-Fe5" secondAttribute="top" id="m0P-Nv-bca"/>
                                     <constraint firstAttribute="trailing" secondItem="yFV-wz-Gpk" secondAttribute="trailing" constant="10" id="rpE-EW-8Xw"/>
                                     <constraint firstAttribute="bottom" secondItem="yFV-wz-Gpk" secondAttribute="bottom" id="ub7-Kt-QL7"/>
                                     <constraint firstItem="yFV-wz-Gpk" firstAttribute="top" secondItem="cs1-V0-Fe5" secondAttribute="top" id="ySS-0a-xqX"/>

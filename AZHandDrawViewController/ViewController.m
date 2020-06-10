@@ -42,5 +42,9 @@
     [self.handDrawView redo];
 }
 
+- (IBAction)clearButtonAction:(UIButton *)sender {
+    [self.handDrawView clear];
+}
+
 
 @end
