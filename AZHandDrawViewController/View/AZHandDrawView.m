@@ -79,7 +79,12 @@
 
 - (void)saveImage:(UIImage *)image {
     
-    NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:self.commandHistory];
+    NSArray *array = self.commandHistory;
+    if (0 < self.currentCommandIndex && self.currentCommandIndex < self.commandHistory.count - 1) {
+        array = [array subarrayWithRange:NSMakeRange(0, self.currentCommandIndex + 1)];
+    }
+    
+    NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:array];
     [mutableArray addObject:image];
     
     if (mutableArray.count > self.maxHistoryCount + 1) {
