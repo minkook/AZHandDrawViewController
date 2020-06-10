@@ -19,6 +19,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) CGLineCap lineCap;    // default is kCGLineCapRound.
 
+@property (nonatomic, assign) NSInteger maxHistoryCount;    // default is 10. Max is 100.
+
+
+- (void)undo;
+
+- (void)redo;
+
 
 @end
 

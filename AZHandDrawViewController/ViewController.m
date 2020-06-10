@@ -26,6 +26,20 @@
     
     self.handDrawView.lineCap = kCGLineCapRound;
     
+    self.handDrawView.maxHistoryCount = 20;
+    
+}
+
+
+
+#pragma mark - Button Action
+
+- (IBAction)undoButtonAction:(UIButton *)sender {
+    [self.handDrawView undo];
+}
+
+- (IBAction)redoButtonAction:(UIButton *)sender {
+    [self.handDrawView redo];
 }
 
 

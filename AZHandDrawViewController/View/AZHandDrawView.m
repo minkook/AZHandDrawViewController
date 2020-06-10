@@ -17,6 +17,12 @@
 @property (nonatomic, assign) CGPoint previousPoint2;
 @property (nonatomic, assign) CGPoint currentPoint;
 
+@property (nonatomic, strong) NSArray *commandHistory;
+@property (nonatomic, assign) NSUInteger currentCommandIndex;
+
+// Flag
+@property (nonatomic, assign) BOOL isFlagFirstDraw;
+
 @end
 
 
@@ -35,6 +41,10 @@
         self.strokeColor = UIColor.redColor;
         self.lineCap = kCGLineCapRound;
         
+        self.commandHistory = [NSArray new];
+        
+        self.maxHistoryCount = 10;
+        
     }
     
     return self;
@@ -50,11 +60,65 @@
 }
 
 
+
+#pragma mark - Property
+
+- (void)setMaxHistoryCount:(NSInteger)maxHistoryCount {
+    _maxHistoryCount = MIN(maxHistoryCount, 100);
+}
+
+
+
 #pragma mark -
 
 - (CGPoint)midPoint:(CGPoint)p1 p2:(CGPoint)p2 {
     
     return CGPointMake((p1.x + p2.x) * 0.5, (p1.y + p2.y) * 0.5);
+    
+}
+
+- (void)saveImage:(UIImage *)image {
+    
+    NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:self.commandHistory];
+    [mutableArray addObject:image];
+    
+    if (mutableArray.count > self.maxHistoryCount + 1) {
+        [mutableArray removeObjectAtIndex:0];
+    }
+    
+    self.commandHistory = [NSArray arrayWithArray:mutableArray];
+    
+    self.currentCommandIndex = self.commandHistory.count - 1;
+    
+}
+
+
+
+#pragma mark - Undo & Redo
+
+- (void)undo {
+    
+    // 예외처리
+    if (self.currentCommandIndex <= 0) {
+        return;
+    }
+    
+    self.currentCommandIndex -= 1;
+    
+    self.imageView.image = self.commandHistory[self.currentCommandIndex];
+    
+}
+
+- (void)redo {
+    
+    // 예외처리
+    if (self.currentCommandIndex >= self.commandHistory.count - 1) {
+        return;
+    }
+    
+    self.currentCommandIndex += 1;
+    
+    self.imageView.image = self.commandHistory[self.currentCommandIndex];
     
 }
 
@@ -69,6 +133,17 @@
     self.previousPoint1 = [touch previousLocationInView:self];
     self.previousPoint2 = [touch previousLocationInView:self];
     self.currentPoint = [touch locationInView:self];
+    
+    if (!self.isFlagFirstDraw) {
+        self.isFlagFirstDraw = YES;
+        
+        UIGraphicsBeginImageContext(self.imageView.frame.size);
+        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        [self saveImage:image];
+        
+    }
     
 }
 
@@ -103,6 +178,12 @@
     
     self.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
+    
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+    [self saveImage:self.imageView.image];
     
 }
 

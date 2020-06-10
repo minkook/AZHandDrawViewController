@@ -15,17 +15,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cs1-V0-Fe5">
+                                <rect key="frame" x="0.0" y="44" width="414" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yFV-wz-Gpk">
+                                        <rect key="frame" x="368" y="0.0" width="36" height="40"/>
+                                        <state key="normal" title="Redo"/>
+                                        <connections>
+                                            <action selector="redoButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Jz-O0-AeC"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YEN-zl-mW9">
+                                        <rect key="frame" x="311" y="0.0" width="37" height="40"/>
+                                        <state key="normal" title="Undo"/>
+                                        <connections>
+                                            <action selector="undoButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ucH-Ow-LUI"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="yFV-wz-Gpk" firstAttribute="leading" secondItem="YEN-zl-mW9" secondAttribute="trailing" constant="20" id="4vz-mu-neC"/>
+                                    <constraint firstAttribute="height" constant="40" id="AtF-NN-Kah"/>
+                                    <constraint firstAttribute="bottom" secondItem="YEN-zl-mW9" secondAttribute="bottom" id="dbu-pv-bap"/>
+                                    <constraint firstAttribute="trailing" secondItem="yFV-wz-Gpk" secondAttribute="trailing" constant="10" id="rpE-EW-8Xw"/>
+                                    <constraint firstAttribute="bottom" secondItem="yFV-wz-Gpk" secondAttribute="bottom" id="ub7-Kt-QL7"/>
+                                    <constraint firstItem="yFV-wz-Gpk" firstAttribute="top" secondItem="cs1-V0-Fe5" secondAttribute="top" id="ySS-0a-xqX"/>
+                                    <constraint firstItem="YEN-zl-mW9" firstAttribute="top" secondItem="cs1-V0-Fe5" secondAttribute="top" id="yhM-vG-Tfv"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fCW-gN-kPa" customClass="AZHandDrawView">
-                                <rect key="frame" x="10" y="54" width="394" height="798"/>
+                                <rect key="frame" x="10" y="94" width="394" height="758"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="fCW-gN-kPa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="5Nm-41-xoO"/>
+                            <constraint firstItem="fCW-gN-kPa" firstAttribute="top" secondItem="cs1-V0-Fe5" secondAttribute="bottom" constant="10" id="CU8-q6-NsH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fCW-gN-kPa" secondAttribute="trailing" constant="10" id="Yjo-tg-NgB"/>
-                            <constraint firstItem="fCW-gN-kPa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="c79-eM-3vz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cs1-V0-Fe5" secondAttribute="trailing" id="Yz0-Vr-wO9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fCW-gN-kPa" secondAttribute="bottom" constant="10" id="ii1-Zi-2Jz"/>
+                            <constraint firstItem="cs1-V0-Fe5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jWI-lN-ioy"/>
+                            <constraint firstItem="cs1-V0-Fe5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="nlg-su-e28"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -35,7 +67,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="133" y="139"/>
+            <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
         </scene>
     </scenes>
 </document>
