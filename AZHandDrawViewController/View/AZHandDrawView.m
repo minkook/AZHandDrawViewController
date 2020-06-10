@@ -86,8 +86,10 @@
 - (void)executeCommandHistoryWithImage:(UIImage *)image {
     
     NSArray *array = self.commandHistory;
-    if (0 < self.currentCommandIndex && self.currentCommandIndex < self.commandHistory.count - 1) {
-        array = [array subarrayWithRange:NSMakeRange(0, self.currentCommandIndex + 1)];
+    if (self.commandHistory.count > 0) {
+        if (0 <= self.currentCommandIndex && self.currentCommandIndex < self.commandHistory.count - 1) {
+            array = [array subarrayWithRange:NSMakeRange(0, self.currentCommandIndex + 1)];
+        }
     }
     
     NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:array];
